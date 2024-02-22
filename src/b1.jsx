@@ -2,29 +2,19 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 function Icon1() {
-  const svgRef = useRef(null);
-  useEffect(() => {
-    const tl = gsap.timeline({ repeat: -1 }); // Loop indefinitely
-    // GSAP animation to move the SVG towards the left smoothly
-    tl.to(svgRef.current, {
-      x: 100, // Move 100 units towards the left
-      duration: 6, // Animation duration in seconds
-      ease: "power2.inOut", // Easing function for smooth motion
-   yoyo:true ,
-    });
-    tl.from(svgRef.current ,{
-      x: 0 ,
-      duration:6 ,
-      yoyo: true
-    })
-     // Change the SVG's fill color to pink
-     gsap.to(svgRef.current, {
-      fill: "#4A5568", // Pink color
-      duration: 2, // Animation duration in seconds
-      delay: 2 // Delay the color change animation by 2 seconds
-    });
-  }, []); // Empty dependency array ensures this effect runs only once after initial render
+  const svgRef = useRef(null) 
 
+  useEffect(() => {
+    gsap.to("#haider1", {
+      x: 100,
+      repeat: -1, // Repeat once (move to x: 400 and then back)
+      yoyo: true, // Yoyo back to initial position
+      // fill: "red",
+      
+      duration: 7, // Animation duration in seconds
+      ease: "power1.inOut"
+    });
+  }, []);
   useEffect(() => {
     // Zoom effect using GSAP
     const tl = gsap.timeline({ repeat: -1 }); // Infinite loop
@@ -39,12 +29,14 @@ function Icon1() {
   }, []);
   return (
     <svg
-    ref={svgRef}
+     ref= {svgRef}
+       id = 'haider1'
       xmlns="http://www.w3.org/2000/svg"
       width="1370"
       height="279"
       fill="none"
       viewBox="0 0 1370 279"
+     
     >
       <path
         fill="#4A5568"
